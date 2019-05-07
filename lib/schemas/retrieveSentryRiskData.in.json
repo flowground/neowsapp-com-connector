@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "is_active": {
+            "required": false,
+            "type": "boolean",
+            "default": true
+        },
+        "page": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+        },
+        "size": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 50
+        }
+    }
+}

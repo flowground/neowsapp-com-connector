@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "start_date": {
+            "required": false,
+            "type": "string"
+        },
+        "end_date": {
+            "required": true,
+            "type": "string"
+        },
+        "detailed": {
+            "required": false,
+            "type": "boolean"
+        }
+    }
+}

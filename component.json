@@ -1,0 +1,153 @@
+{
+    "title": "NeoWs - (Near Earth Object Web Service)",
+    "description": "A web service for near earth objects. All the data is from the  <a href=\"http://neo.jpl.nasa.gov/\" target=\"_blank\">NASA JPL Asteroid team</a>. \n\n \n\nNeoWs is proud to power AsteroidTracker on <a href=\"https://itunes.apple.com/us/app/asteroid-tracker/id689684901?mt=8\" target=\"_blank\">iOS</a> and <a href=\"https://play.google.com/store/apps/details?id=com.vitruviussoftware.bunifish.asteroidtracker&feature\" target=\"_blank\">Android</a> as well as related apps. \n\n Get <a href=\"http://apps.getpebble.com/en_US/application/55bc4913d1690c372900000f\" target=\"_blank\">Asteroid Today on Pebble</a> \n\nFollow us on <a href=\"https://twitter.com/AsteroidTracker\" target=\"_blank\">Twitter</a>",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/neowsapp.com/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://www.neowsapp.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "retrieveNearEarthObjectFeed": {
+            "main": "./lib/actions/retrieveNearEarthObjectFeed.js",
+            "title": "Find Near Earth Objects by date",
+            "description": "Get a list of Near Earth Objects within a date range, The max range in one query is 7 days",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveNearEarthObjectFeed.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveNEOFeedToday": {
+            "main": "./lib/actions/retrieveNEOFeedToday.js",
+            "title": "Find Near Earth Objects for today",
+            "description": "Get a list of Near Earth Objects for today",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveNEOFeedToday.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "browseNearEarthObjects": {
+            "main": "./lib/actions/browseNearEarthObjects.js",
+            "title": "Browse the Near Earth Objects service",
+            "description": "Retieve a paginated list of Near Earth Objects",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/browseNearEarthObjects.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveSentryRiskData": {
+            "main": "./lib/actions/retrieveSentryRiskData.js",
+            "title": "Retrieve Sentry (Impact Risk ) Near Earth Objects",
+            "description": "Retrieves Near Earth Objects listed in the NASA sentry data set",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveSentryRiskData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveSentryRiskDataById": {
+            "main": "./lib/actions/retrieveSentryRiskDataById.js",
+            "title": "Retrieve Sentry (Impact Risk ) Near Earth Objectby ID ",
+            "description": "Retrieves Sentry Near Earth Object by ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveSentryRiskDataById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveNearEarthObjectById": {
+            "main": "./lib/actions/retrieveNearEarthObjectById.js",
+            "title": "Find Near Earth Objects by id",
+            "description": "Retrieve a Near Earth Objects with a given id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveNearEarthObjectById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "retrieveCurrentNeoStatistics": {
+            "main": "./lib/actions/retrieveCurrentNeoStatistics.js",
+            "title": "Get the Near Earth Object data set totals",
+            "description": "retrieveCurrentNeoStatistics",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveCurrentNeoStatistics.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

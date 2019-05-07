@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "asteroid_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
